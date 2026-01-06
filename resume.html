@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume — Antonio Louis Castillo</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS Variables --- */
+        :root {
+            --primary-green: #4F6F2F;
+            --accent-green: #6B8E43;
+            --bg-color: #F3F5F2;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-muted: #555555;
+            --shadow-soft: 0 8px 24px rgba(0,0,0,0.12);
+            --border-light: 1px solid rgba(0,0,0,0.08);
+        }
+
+        /* --- Reset & Base Styles --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            background-image: url('images/bg.png');
+            background-size: cover;
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a { text-decoration: none; transition: 0.3s ease; }
+        ul { list-style: none; }
+
+        /* --- Header / Nav --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 8%;
+            background: transparent;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+
+        nav ul { display: flex; gap: 40px; }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            position: relative;
+        }
+
+        nav a:hover, nav a.active { color: var(--primary-green); }
+
+        nav a::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: -5px; left: 0; background-color: var(--accent-green);
+            transition: width 0.3s;
+        }
+        nav a:hover::after { width: 100%; }
+
+        /* --- Layout --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 8% 80px;
+            flex: 1;
+        }
+
+        /* --- Profile Header Card --- */
+        .profile-header {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+            margin-bottom: 40px;
+            border: var(--border-light);
+        }
+
+        .profile-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--bg-color);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .header-info h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            background: #f9fcf8;
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(79, 111, 47, 0.1);
+        }
+
+        .contact-item i { color: var(--accent-green); }
+
+        /* --- Main Grid Layout --- */
+        .resume-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr; /* Left 66%, Right 33% */
+            gap: 30px;
+        }
+
+        /* Common Card Style */
+        .resume-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: var(--shadow-soft);
+            border: var(--border-light);
+            margin-bottom: 30px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .resume-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.15);
+        }
+
+        .resume-card:last-child { margin-bottom: 0; }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--primary-green);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(79, 111, 47, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Left Column Content */
+        .summary-text { font-size: 1rem; color: var(--text-muted); line-height: 1.7; }
+
+        .timeline-item {
+            margin-bottom: 25px;
+            padding-left: 15px;
+            border-left: 3px solid rgba(79, 111, 47, 0.15);
+        }
+
+        .timeline-item:last-child { margin-bottom: 0; }
+
+        .job-title {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-main);
+        }
+
+        .job-date {
+            font-size: 0.85rem;
+            color: var(--accent-green);
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .job-desc {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+        
+        .job-desc ul {
+            list-style: disc;
+            margin-left: 20px;
+            margin-top: 8px;
+        }
+
+        /* Right Column Content */
+        .skill-list, .awards-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .skill-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .skill-item i {
+            color: var(--accent-green);
+            margin-top: 4px;
+            min-width: 16px;
+        }
+        
+        .award-group { margin-bottom: 15px; }
+        .award-group h4 { font-size: 0.95rem; color: var(--text-main); font-weight: 700; margin-bottom: 5px; }
+        .award-group ul { margin-left: 20px; list-style: disc; font-size: 0.9rem; color: var(--text-muted); }
+
+        /* Download Button */
+        .download-btn {
+            background-color: var(--primary-green);
+            color: white;
+            width: 100%;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 1rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(79, 111, 47, 0.2);
+            margin-top: 20px;
+        }
+
+        .download-btn:hover {
+            background-color: var(--accent-green);
+            transform: translateY(-2px);
+        }
+
+        /* --- Footer --- */
+        footer {
+            margin-top: auto;
+            background-color: var(--primary-green);
+            color: #ffffff;
+            padding: 20px 5%;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 900px) {
+            header { padding: 20px 5%; }
+            .container { padding: 40px 5%; }
+            
+            .profile-header { flex-direction: column; text-align: center; gap: 20px; padding: 30px; }
+            .contact-grid { justify-content: center; }
+            
+            .resume-grid { grid-template-columns: 1fr; }
+            
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html" style="color: var(--primary-green)">Antonio Louis</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resume.html" class="active">Resume</a></li>
+                <li><a href="contact.html">Contact Info</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        
+        <div class="profile-header">
+            <img src="images/Antonio.jpg" alt="Antonio Louis L. Castillo" class="profile-img">
+            <div class="header-info">
+                <h1>Antonio Louis L. Castillo</h1>
+                <div class="contact-grid">
+                    <span class="contact-item"><i class="fa-solid fa-location-dot"></i> Bacoor, Cavite</span>
+                    <span class="contact-item"><i class="fa-solid fa-envelope"></i> cal1459@dlsud.edu.ph</span>
+                    <span class="contact-item"><i class="fa-solid fa-phone"></i> (+63) 922 459 1159</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="resume-grid">
+            
+            <div class="left-col">
+                
+                <section class="resume-card">
+                    <h2 class="section-title"><i class="fa-solid fa-user"></i> Summary</h2>
+                    <p class="summary-text">
+                        A fourth-year Bachelor of Science in Information Technology student with experience in developing web-based systems and designing visually appealing, user-friendly interfaces. Equipped with strong leadership and communication skills, and highly adaptable to diverse work environments.
+                    </p>
+                </section>
+
+                <section class="resume-card">
+                    <h2 class="section-title"><i class="fa-solid fa-briefcase"></i> Work History</h2>
+                    <div class="timeline-item">
+                        <div class="job-title">Project Leader & UI Designer</div>
+                        <span class="job-date">March 2025 - Present</span>
+                        <div class="job-desc">
+                            <strong>A Dedicated Web-Based System for DLSU-D Campus Ministry Office</strong>
+                            <ul>
+                                <li>Served as the project leader and primary user interface designer for a web-based application developed to streamline and digitalize the Campus Ministry Office's processes while enhancing its visibility and engagement within the Lasallian community.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="resume-card">
+                    <h2 class="section-title"><i class="fa-solid fa-graduation-cap"></i> Education</h2>
+                    
+                    <div class="timeline-item">
+                        <div class="job-title">De La Salle University - Dasmariñas</div>
+                        <span class="job-date">August 2022 - Present</span>
+                        <div class="job-desc">
+                            BS in Information Technology, Specialization in Web Development
+                            <ul>
+                                <li>Dean's Lister</li>
+                                <li>Academic Scholarship</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="job-title">Cavite School of St. Mark</div>
+                        <span class="job-date">July 2020 - May 2022</span>
+                        <div class="job-desc">
+                            High School Diploma - ABM Strand
+                            <ul>
+                                <li>With Highest Honors</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+
+                <a href="images/resume.pdf" class="download-btn" download="Antonio_Castillo_Resume.pdf">
+                    <i class="fa-solid fa-file-pdf"></i> Download Full Resume
+                </a>
+
+            </div>
+
+            <div class="right-col">
+                
+                <section class="resume-card">
+                    <h2 class="section-title">Technical Skills</h2>
+                    <ul class="skill-list">
+                        <li class="skill-item"><i class="fa-solid fa-code"></i> Proficient in HTML & CSS</li>
+                        <li class="skill-item"><i class="fa-solid fa-laptop-code"></i>Knowledgeable in C++, Java & C#</li>
+                        <li class="skill-item"><i class="fa-brands fa-figma"></i>Skilled in Canva and Figma</li>
+                        <li class="skill-item"><i class="fa-brands fa-microsoft"></i>Competent in Microsoft Office Apps</li>
+                    </ul>
+                </section>
+
+                <section class="resume-card">
+                    <h2 class="section-title">Soft Skills</h2>
+                    <ul class="skill-list">
+                        <li class="skill-item"><i class="fa-solid fa-check"></i> Strong Leadership Abilities</li>
+                        <li class="skill-item"><i class="fa-solid fa-check"></i> Effective Communication Skills</li>
+                        <li class="skill-item"><i class="fa-solid fa-check"></i> Solid Problem-Solving Capability</li>
+                        <li class="skill-item"><i class="fa-solid fa-check"></i> Excellent Time-Management Skills</li>
+                        <li class="skill-item"><i class="fa-solid fa-check"></i> Highly Adaptable</li>
+                    </ul>
+                </section>
+
+                <section class="resume-card">
+                    <h2 class="section-title">Awards</h2>
+                    
+                    <div class="award-group">
+                        <h4>DLSU-D CSCS Student Government</h4>
+                        <ul>
+                            <li>Data Management Committee (2023-2024)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="award-group">
+                        <h4>Cisco Networking Academy</h4>
+                        <ul>
+                            <li>Intro to Cybersecurity (2023-2024)</li>
+                        </ul>
+                    </div>
+
+                    <div class="award-group">
+                        <h4>Cavite School of St. Mark</h4>
+                        <ul>
+                            <li>Dr. Rogelio R. Garcia Leadership Award (2021-2022)</li>
+                            <li>Flora Janet Sarino Garcia Academic Excellence Award (2021-2022)</li>
+                        </ul>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+        <span>&copy; 2025 Antonio Louis Castillo</span>
+    </footer>
+
+</body>
+</html>

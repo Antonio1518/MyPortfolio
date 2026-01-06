@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Skills — Antonio Louis Castillo</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS Variables (Consistent with other pages) --- */
+        :root {
+            --primary-green: #4F6F2F;
+            --accent-green: #6B8E43;
+            --bg-color: #F3F5F2;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.08);
+            --shadow-hover: 0 20px 50px -10px rgba(0,0,0,0.15);
+        }
+
+        /* --- Reset & Base Styles --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            background-image: url('images/bg.png'); /* Ensure this matches your file */
+            background-size: cover;
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a { text-decoration: none; transition: 0.3s ease; }
+        ul { list-style: none; }
+
+        /* --- Header / Nav --- */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 8%;
+            background: transparent;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+
+        nav ul { display: flex; gap: 40px; }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            position: relative;
+        }
+
+        nav a:hover, nav a.active { color: var(--primary-green); }
+
+        nav a::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: -5px; left: 0; background-color: var(--accent-green);
+            transition: width 0.3s;
+        }
+        nav a:hover::after { width: 100%; }
+
+        /* --- Layout --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 8%;
+            flex: 1;
+        }
+
+        /* --- Hero Section --- */
+        .page-intro {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 60px auto;
+        }
+
+        .eyebrow {
+            color: var(--accent-green); font-weight: 600;
+            text-transform: uppercase; letter-spacing: 2px;
+            font-size: 0.85rem; margin-bottom: 15px; display: block;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--primary-green);
+            margin-bottom: 15px;
+            line-height: 1.1;
+        }
+
+        .intro-text {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* --- Skills Section Styling --- */
+        .skills-section { margin-bottom: 60px; }
+
+        .section-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            margin-bottom: 30px;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        /* Grid for Technical/Creative Cards */
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+            gap: 20px;
+        }
+
+        .tool-card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px 15px;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--accent-green);
+        }
+
+        .tool-icon {
+            font-size: 2.5rem;
+            color: var(--primary-green);
+        }
+
+        .tool-name {
+            font-weight: 600;
+            color: var(--text-main);
+            font-size: 0.95rem;
+        }
+
+        /* --- Soft Skills (Full Width Card) --- */
+        .soft-skills-container {
+            background: white;
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+
+        .soft-skills-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .soft-skill-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .check-icon {
+            background-color: rgba(107, 142, 67, 0.15);
+            color: var(--primary-green);
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 0.9rem;
+        }
+
+        .skill-text {
+            font-weight: 500;
+            color: var(--text-main);
+            font-size: 1.05rem;
+        }
+
+        /* --- Footer --- */
+        footer {
+            margin-top: auto;
+            background-color: var(--primary-green);
+            color: #ffffff;
+            padding: 20px 5%;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        /* --- Responsive --- */
+        @media (max-width: 768px) {
+            header { padding: 20px 5%; }
+            .container { padding: 40px 5%; }
+            h1 { font-size: 2.5rem; }
+            .tools-grid { grid-template-columns: repeat(2, 1fr); }
+            .soft-skills-list { grid-template-columns: 1fr; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html" style="color: var(--primary-green)">Antonio Louis</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="skills.html" class="active">Skills</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="contact.html">Contact Info</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        
+        <div class="page-intro">
+            <span class="eyebrow">What I Work With</span>
+            <h1>Key Skills, Tools, and Expertise</h1>
+            <p class="intro-text">
+                A combination of technical proficiency in web development and creative skills in digital media, backed by strong professional traits.
+            </p>
+        </div>
+
+        <section class="skills-section">
+            <h2 class="section-heading">Development & Technical</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <i class="fa-brands fa-html5 tool-icon"></i>
+                    <span class="tool-name">HTML & CSS</span>
+                </div>
+                <div class="tool-card">
+                    <i class="fa-solid fa-code tool-icon"></i> <span class="tool-name">C# & C++</span>
+                </div>
+                <div class="tool-card">
+                    <i class="fa-brands fa-java tool-icon"></i>
+                    <span class="tool-name">Java</span>
+                </div>
+                <div class="tool-card">
+                    <i class="fa-brands fa-figma tool-icon"></i>
+                    <span class="tool-name">Figma</span>
+                </div>
+                <div class="tool-card">
+                    <i class="fa-solid fa-paintbrush tool-icon"></i>
+                    <span class="tool-name">Canva</span>
+                </div>
+                <div class="tool-card">
+                    <i class="fa-brands fa-microsoft tool-icon"></i>
+                    <span class="tool-name">MS Office</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills-section">
+            <h2 class="section-heading">Creative Suite (Photography & Video)</h2>
+            <div class="tools-grid">
+                <div class="tool-card">
+                    <i class="fa-solid fa-image tool-icon"></i>
+                    <span class="tool-name">Adobe Photoshop</span>
+                </div>
+                <div class="tool-card">
+                    <i class="fa-solid fa-sliders tool-icon"></i>
+                    <span class="tool-name">Adobe Lightroom</span>
+                </div>
+                <div class="tool-card">
+                    <i class="fa-solid fa-film tool-icon"></i>
+                    <span class="tool-name">Adobe Premiere Pro</span>
+                </div>
+                <div class="tool-card">
+                    <i class="fa-solid fa-scissors tool-icon"></i>
+                    <span class="tool-name">CapCut</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="skills-section">
+            <h2 class="section-heading">Professional Traits</h2>
+            <div class="soft-skills-container">
+                <div class="soft-skills-list">
+                    <div class="soft-skill-item">
+                        <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                        <span class="skill-text">Strong Leadership Abilities</span>
+                    </div>
+                    <div class="soft-skill-item">
+                        <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                        <span class="skill-text">Effective Communication Skills</span>
+                    </div>
+                    <div class="soft-skill-item">
+                        <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                        <span class="skill-text">Solid Problem-Solving Capability</span>
+                    </div>
+                    <div class="soft-skill-item">
+                        <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                        <span class="skill-text">Excellent Time Management Skills</span>
+                    </div>
+                    <div class="soft-skill-item">
+                        <div class="check-icon"><i class="fa-solid fa-check"></i></div>
+                        <span class="skill-text">Highly Adaptable in Different Environments</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <span>&copy; 2025 Antonio Louis Castillo</span>
+    </footer>
+
+</body>
+</html>

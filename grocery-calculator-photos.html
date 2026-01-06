@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grocery Calculator App Photos — Antonio Louis Castillo</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary-green: #4F6F2F;
+            --accent-green: #6B8E43;
+            --bg-color: #F3F5F2;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --shadow-soft: 0 10px 40px -10px rgba(0,0,0,0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            background-image: url('images/bg.png');
+            background-size: cover;
+            background-attachment: fixed;
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a { text-decoration: none; transition: 0.3s ease; }
+        ul { list-style: none; }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 30px 8%;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-green);
+        }
+
+        nav ul { display: flex; gap: 40px; }
+
+        nav a {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            position: relative;
+        }
+
+        nav a:hover, nav a.active { color: var(--primary-green); }
+
+        nav a::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: -5px; left: 0; background-color: var(--accent-green);
+            transition: width 0.3s;
+        }
+        nav a:hover::after { width: 100%; }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 8%;
+            flex: 1;
+        }
+
+        .page-intro { text-align: center; margin-bottom: 40px; }
+        .page-intro h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            color: var(--primary-green);
+            margin-bottom: 10px;
+        }
+        .page-intro p {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--accent-green);
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        .back-link:hover { color: var(--primary-green); gap: 12px; }
+
+        /* Gallery */
+        .photo-gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .photo-item {
+            flex: 0 1 calc(50% - 15px);
+            max-width: 450px;
+        }
+        .photo-item img {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            display: block;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+        }
+
+        footer {
+            margin-top: auto;
+            background-color: var(--primary-green);
+            color: #ffffff;
+            padding: 20px 5%;
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 900px) {
+            header { padding: 20px 5%; }
+            .container { padding: 40px 5%; }
+            .photo-item { flex: 0 1 100%; max-width: 100%; }
+            nav { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <a href="index.html" style="color: var(--primary-green)">Antonio Louis</a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="skills.html">Skills</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="resume.html">Resume</a></li>
+                <li><a href="contact.html">Contact Info</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <a href="projects.html" class="back-link"><i class="fa-solid fa-arrow-left"></i> Back to Projects</a>
+
+        <div class="page-intro">
+            <h1>Mobile Grocery Calculator</h1>
+            <p>A mobile app that tracks grocery items bought and calculates the total cost for easy budgeting.</p>
+        </div>
+
+        <div class="photo-gallery">
+            <div class="photo-item"><img src="images/grabHome.jpg" alt="Grocery Calculator screen 1"></div>
+            <div class="photo-item"><img src="images/grabReceipt.jpg" alt="Grocery Calculator screen 2"></div>
+        </div>
+    </div>
+
+    <footer>
+        <span>&copy; 2025 Antonio Louis Castillo</span>
+    </footer>
+
+    <script>
+        // Adjust photo sizes based on orientation
+        document.querySelectorAll('.photo-item img').forEach(img => {
+            img.onload = function() {
+                const isPortrait = this.naturalHeight > this.naturalWidth;
+                const parentItem = this.closest('.photo-item');
+                parentItem.style.maxWidth = isPortrait ? '350px' : '550px';
+            };
+            if (img.complete) { img.onload(); }
+        });
+    </script>
+</body>
+</html>
